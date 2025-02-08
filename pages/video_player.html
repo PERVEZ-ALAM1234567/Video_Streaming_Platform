@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Yube</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="video_player.css">
+
+    <script src="video_script.js" defer></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <button id="toggleSidebar" class="toggle-sidebar-btn"><i class="fas fa-bars"></i></button>
+            <h1 class="logo">My Tube</h1>
+        </div>
+        <i class="fas fa-sun mode-toggle" id="toggleMode"></i>
+    </header>
+
+    <!-- SIDE BAR NAVIGATION -->
+    <nav class="sidebar" id="sidebar">
+        <ul class="menu">
+            <li><a href="#home" class="menu-item"><i class="fas fa-home icon"></i><span class="label">Home</span></a>
+            </li>
+            <li><a href="#trending" class="menu-item"><i class="fas fa-fire icon"></i><span
+                        class="label">Trending</span></a>
+            </li>
+            <li><a href="#subscriptions" class="menu-item"><i class="fas fa-tv icon"></i><span
+                        class="label">Subscriptions</span></a></li>
+            <li><a href="#library" class="menu-item"><i class="fas fa-book icon"></i><span
+                        class="label">Library</span></a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="content" id="content">
+        <div class="video-container">
+            <video id="video-player" controls></video>
+        </div>
+
+        <h2 id="video-title" class="text-wrap">Video Title</h2>
+        <span id="read-more-title" class="read-more-btn" style="display:inline;">Read More</span>
+
+        <div class="video-meta">
+            <div class="channel-info">
+                <img src="channel-icon.png" alt="Channel Icon" class="channel-icon">
+                <div>
+                    <p id="channel-name">Channel Name</p>
+                    <p id="subscribers">1M subscribers</p>
+                </div>
+            </div>
+            <button id="subscribe">Subscribe</button>
+            <div class="video-actions">
+                <button><i class="fas fa-thumbs-up"></i> Like</button>
+                <button><i class="fas fa-thumbs-down"></i> Dislike</button>
+                <button><i class="fas fa-download"></i> Download</button>
+                <button><i class="fas fa-ellipsis-h"></i></button>
+            </div>
+        </div>
+
+        <p id="video-description" class="text-wrap"></p>
+        <span id="read-more-desc" class="read-more-btn" style="display:inline;">Read More</span>
+
+        <section id="comments">
+            <h3>Comments</h3>
+            <div id="comment-list"></div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; <span id="year"></span> My Tube. All Rights Reserved.</p>
+        </footer>
+
+    </main>
+
+</body>
+
+</html>

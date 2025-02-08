@@ -1,0 +1,611 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  /* Light mode background */
+  color: #000000;
+  /* Light mode text color */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #181818;
+  /* Dark mode background */
+  color: #ffffff;
+  /* Dark mode text color */
+}
+
+/* If you want light mode content to have specific colors: */
+body.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+  /* Ensure light mode text is black */
+}
+
+header,
+.sidebar,
+.content {
+  color: inherit;
+  /* Ensures color is inherited */
+}
+
+/* For light mode-specific styling */
+body.light-mode .header {
+  background-color: #ffffff;
+  /* Light header background */
+  color: #000000;
+  /* Light header text */
+}
+
+/* Sidebar for light mode */
+body.light-mode .sidebar {
+  background-color: #ffffff;
+  /* Light sidebar background */
+  color: #000000;
+  /* Light sidebar text */
+}
+
+/* Button styling in light mode */
+body.light-mode button {
+  color: #000000;
+  /* Ensure button text is black in light mode */
+}
+
+/* And similarly, for other elements like menu, video titles, etc. */
+body.light-mode .menu-item {
+  color: #000000;
+  /* Light mode menu text color */
+}
+
+/* Dark Mode Specific Styles */
+body.dark-mode .header {
+  background-color: #181818;
+  /* Dark header background */
+  color: #ffffff;
+  /* Dark header text */
+}
+
+body.dark-mode .sidebar {
+  background-color: #202020;
+  /* Dark sidebar background */
+  color: #ffffff;
+  /* Dark sidebar text */
+}
+
+body.dark-mode .menu-item {
+  color: #ffffff;
+  /* Dark mode menu text color */
+}
+
+/* Button styling in dark mode */
+body.dark-mode button {
+  color: #ffffff;
+  /* Ensure button text is white in dark mode */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: #ff0000; */
+  color: white;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-sidebar-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 1px solid #ffffff;
+  border-radius: 30px;
+  margin-right: 5px;
+}
+
+.search-icon {
+  font-size: 20px;
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+.user-icon {
+  font-size: 20px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+/* Mode Toggle Icon */
+.mode-toggle {
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 15px;
+  transition: color 0.3s;
+}
+
+/* Sun Icon in Light Mode */
+body.light-mode .mode-toggle {
+  color: #fbc02d;
+  /* Yellow Sun */
+  content: "\f186";
+  /* FontAwesome Sun icon */
+}
+
+/* Moon Icon in Dark Mode */
+body.dark-mode .mode-toggle {
+  color: #f1f1f1;
+  /* White Moon */
+  content: "\f186";
+  /* FontAwesome Moon icon */
+}
+
+/* Mode Toggle Icon */
+.mode-toggle {
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 15px;
+  transition: color 0.3s;
+}
+
+body.light-mode .mode-toggle {
+  color: #ffc107;
+  /* Sun icon (day mode) */
+}
+
+body .mode-toggle {
+  color: #f1f1f1;
+  /* Moon icon (night mode) */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  overflow-y: auto;
+  transition: width 0.3s;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+.menu {
+  list-style: none;
+  margin-top: 60px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.menu-item:hover {
+  background-color: #383838;
+}
+
+.icon {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+.label {
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.sidebar.collapsed .label {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Content */
+.content {
+  margin-left: 250px;
+  padding: 20px;
+  transition: margin-left 0.3s;
+}
+
+.sidebar.collapsed~.content {
+  margin-left: 70px;
+}
+
+/* Container for video thumbnails */
+.video-item {
+  display: inline-block;
+  width: 300px;
+  margin: 10px;
+  text-align: center;
+}
+
+.video-thumbnail {
+  width: 100%;
+  height: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.video-thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.video-description {
+  display: inline-block;
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+.video-description,
+.read-more-btn {
+  white-space: normal;
+}
+
+/* Normal YouTube Video (16:9) */
+.normal-video {
+  width: 800px;
+  height: 450px;
+  display: block;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* YouTube Shorts (9:16) */
+.shorts-video {
+  width: 300px;
+  height: 530px;
+  display: block;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  /* Normal width */
+  position: fixed;
+  left: -250px;
+  /* Hide sidebar initially */
+  height: 100%;
+  background: #333;
+  transition: left 0.3s ease-in-out;
+}
+
+.sidebar.open {
+  left: 0;
+  /* Sidebar opens when class "open" is added */
+}
+
+/* Adjust content when sidebar is open */
+.content {
+  transition: margin-left 0.3s ease-in-out;
+  margin-left: 0;
+  /* Default without sidebar */
+}
+
+.sidebar.open+.content {
+  margin-left: 250px;
+  /* Move content when sidebar opens */
+}
+
+.menu {
+  list-style: none;
+  margin-top: 60px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.menu-item:hover {
+  background-color: #383838;
+}
+
+.icon {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+.label {
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.sidebar.collapsed .label {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Main Content */
+main {
+  margin-left: 240px;
+  padding: 20px;
+}
+
+/* Prevent Horizontal Scroll */
+.text-wrap {
+  display: inline-block;
+
+  max-width: 100%;
+}
+
+.video-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.read-more-btn {
+  display: inline;
+  /* Make sure it's on the same line */
+  cursor: pointer;
+  /* Make it look clickable */
+  color: rgb(82, 82, 82);
+  /* Optional: style the button to look like a link */
+  text-decoration: underline;
+  /* Optional: underline for better UX */
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.menu-item {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.video-container {
+  /* width: 100%;
+  max-width: 400px;
+  margin: 20px auto; */
+  /* height: 80vh;
+  width: 500px; */
+}
+
+video {
+  /* width: 100%; */
+  height: auto;
+  /* Maintain aspect ratio */
+  max-height: 80vh;
+  /* Screen ke 80% tak limit kare */
+  object-fit: cover;
+  /* Video ko screen ke andar fit kare */
+  border-radius: 8px;
+}
+
+#video-title {
+  font-size: 24px;
+  margin-top: 15px;
+}
+
+/* Normal YouTube Video (16:9) */
+.normal-video {
+  width: 100%;
+  max-width: 1280px;
+  aspect-ratio: 16 / 9;
+  display: block;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* YouTube Shorts (9:16) */
+.shorts-video {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 9 / 16;
+  display: block;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Landscape Video (16:9) */
+.landscape-video {
+  width: 100%;
+  max-width: 1280px;
+  aspect-ratio: 16 / 9;
+  display: block;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Video Meta Section */
+.video-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  /* Prevents wrapping */
+  margin-top: 15px;
+  padding: 10px 0;
+}
+
+/* Channel info styling */
+.channel-info {
+  display: flex;
+  align-items: center;
+}
+
+/* Channel name */
+#channel-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 20px;
+  /* Add margin right to create space between channel name and subscribe button */
+}
+
+/* Subscribe button positioning */
+#subscribe {
+  background-color: #cc0000;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin-left: 0px;
+  margin-right: 100px;
+}
+
+#subscribe:hover {
+  background-color: #ff0000;
+}
+
+/* Video Actions (Like, Dislike, Download) */
+.video-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.video-actions button {
+  display: flex;
+  align-items: center;
+  background: #cfcfcf;
+  color: #ddd;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  border: 1px solid #555;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.video-actions button i {
+  margin-right: 5px;
+  color: #ffffff;
+}
+
+.video-actions button:hover {
+  background: #444;
+  color: white;
+}
+
+/* Night Mode (Grey & White) */
+body.dark-mode .video-actions button {
+  background: #222;
+  color: #eee;
+  border: 1px solid #666;
+}
+
+body.dark-mode .video-actions button i {
+  color: #fff;
+}
+
+body.dark-mode .video-actions button:hover {
+  background: #383838;
+}
+
+body.dark-mode #subscribe {
+  background-color: #aa0000;
+}
+
+body.dark-mode #subscribe:hover {
+  background-color: #ff4444;
+}
+
+#comments {
+  margin-top: 40px;
+}
+
+#comments h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+#comment-list {
+  list-style-type: none;
+}
+
+#comment-list li {
+  padding: 12px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+#comment-list li:last-child {
+  border-bottom: none;
+}
+
+.comment-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.comment-info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comment-info .username {
+  font-weight: bold;
+}
+
+.comment-info .timestamp {
+  font-size: 12px;
+  color: #888;
+}
+
+.comment-content {
+  font-size: 14px;
+  line-height: 1.4;
+}
