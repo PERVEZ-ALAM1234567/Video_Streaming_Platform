@@ -1,0 +1,680 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  color: #333;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+/* Basic Styling for 3-dot menu and dropdown
+.three-dots {
+  cursor: pointer;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.dropdown-menu button {
+  padding: 8px 12px;
+  background-color: #f1f1f1;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background-color: #e1e1e1;
+}
+
+.dropdown-menu.show {
+  display: block;
+} */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-sidebar-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 1px solid #ffffff;
+  border-radius: 30px;
+  margin-right: 5px;
+}
+
+.search-icon {
+  font-size: 20px;
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+.user-icon {
+  font-size: 20px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+/* Buttons */
+.auth-btn,
+.upload-btn {
+  background-color: #ff0000;
+  text-transform: capitalize;
+  color: white;
+  border: none;
+  margin: 5px;
+  padding: 8px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.auth-btn:hover,
+.upload-btn:hover {
+  text-transform: uppercase;
+  transform: translateY(-5px);
+  box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(45deg, #f176a5, #c02d2d, #f176a5);
+}
+
+/* Logout button hidden initially */
+#logoutBtn {
+  display: none;
+}
+
+/* Day (Light) Mode */
+body.light-mode {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.header.light-mode {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.sidebar.light-mode {
+  background-color: #f1f1f1; /* Light color for sidebar */
+  color: #333; /* Dark text for contrast */
+}
+
+.sidebar.light-mode .menu-item {
+  color: #333; /* Dark text for menu items */
+}
+
+.sidebar.light-mode .menu-item:hover {
+  background-color: #ddd; /* Hover effect */
+}
+
+.filter-bar.light-mode {
+  background-color: #eaeaea; /* Light background for filter */
+  border-bottom: 1px solid #ccc; /* Light border */
+}
+
+.content.light-mode {
+  background-color: #f9f9f9; /* Light content background */
+}
+
+/* Hamburger icon in day mode (light mode) */
+body.light-mode .toggle-sidebar-btn {
+  color: #333; /* Make the icon dark in light mode */
+}
+
+body.light-mode .toggle-sidebar-btn i {
+  color: #333; /* Hamburger icon color */
+}
+
+/* Dark Mode */
+body {
+  background-color: #181818;
+  color: #ffffff;
+}
+
+.header {
+  background-color: #202020;
+  color: white;
+}
+
+.sidebar {
+  background-color: #202020;
+  color: white;
+}
+
+.filter-bar {
+  background-color: #383838;
+  border-bottom: 1px solid #444;
+}
+
+.content {
+  background-color: #121212;
+}
+
+.filter-btn {
+  background-color: #ffffff;
+  color: white;
+}
+
+/* Night Mode Fix */
+body.dark-mode .dropdown-menu {
+  background-color: #333; /* Dark background */
+  color: white; /* White text */
+}
+
+body.dark-mode .dropdown-menu button {
+  color: white; /* White text in dark mode */
+}
+
+body.dark-mode .dropdown-menu button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+
+
+
+
+
+
+  /* Basic Styling for 3-dot menu and dropdown */
+  .three-dots {
+    cursor: pointer;
+    font-size: 20px;
+    padding: 18px; /* Add padding to increase the clickable area */
+    display: inline-block;
+    /* border: 1px solid #ddd; */
+    /* border-radius: 5px; */
+    position: relative; /* Ensures the dropdown menu positions correctly */
+  }
+
+  /* Create the vertical dots (stacked) */
+  .three-dots i {
+    display: block;
+    margin: 3px 0; /* Adjust margin for proper spacing between dots */
+  }
+
+  /* Position the dropdown menu */
+/* Dropdown Menu Styling */
+.dropdown-menu {
+  background-color: white; /* Light mode background */
+  color: black; /* Light mode text color */
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  right: 10px;
+  top: 50px;
+  display: none;
+  flex-direction: column;
+  padding: 10px;
+  z-index: 100;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  color: black; /* Default text color */
+  padding: 8px 12px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown-menu button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+  /* Show dropdown menu on click */
+  .dropdown-menu.show {
+    display: block;
+  }
+
+  /* Show "show more" text on hover */
+  .three-dots:hover::after {
+    content: "Show more";
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    background-color: #ffffff;
+    color: black;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    display: block;
+    z-index: 200;
+  }
+
+
+/* Mode Toggle Icon */
+.mode-toggle {
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 15px;
+  transition: color 0.3s;
+}
+
+body.light-mode .mode-toggle {
+  color: #ffc107; /* Sun icon (day mode) */
+}
+
+body .mode-toggle {
+  color: #f1f1f1; /* Moon icon (night mode) */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  height: 100vh;
+  position: fixed;
+  top: 40px;
+  left: 0;
+  overflow: auto;
+  overflow-y: auto;
+  transition: width 0.3s;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+.menu {
+  list-style: none;
+  margin-top: 60px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.menu-item:hover {
+  background-color: #383838;
+}
+
+.icon {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+.label {
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.sidebar.collapsed .label {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  /* background-color: #000000; */
+  padding: 10px 15px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #ddd;
+  margin-left: 250px;
+  transition: margin-left 0.3s;
+}
+
+.filter-bar.sidebar-collapsed {
+  margin-left: 70px;
+}
+
+.filter-btn {
+  background-color: #e5e5e5;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 15px;
+  margin-right: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #333;
+}
+
+
+.filter-btn:hover {
+  background-color: #202020;
+  color: white;
+}
+.filter-btn.active {
+  background: #ff0000;
+  color: white;
+}
+/* Light Mode */
+body.light-mode .filter-bar {
+  background-color: #f1f1f1;
+}
+
+body.light-mode .filter-btn {
+  background: #ddd;
+  color: #000;
+}
+
+body.light-mode .filter-btn.active {
+  background: #ff0000;
+  color: white;
+}
+body.light-mode .filter-btn:hover {
+  background-color: #202020;
+  color: rgb(255, 255, 255);
+}
+
+
+
+/* 🔹 Dark Mode */
+body.dark-mode .filter-bar {
+  background-color: #ff0000; /* Dark Mode Background */
+}
+body.dark-mode .filter-btn:hover {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+body.dark-mode .filter-btn {
+  background: #ff0303; /* Dark Mode Button Background */
+  color: white; /* Dark Mode Text */
+}
+
+body.dark-mode .filter-btn.active {
+  background: #ff4444; /* Dark Mode Active Button */
+  color: rgb(0, 0, 0);
+}
+/* Content */
+.content {
+  margin-left: 250px;
+  padding: 20px;
+  transition: margin-left 0.3s;
+}
+
+.sidebar.collapsed ~ .content {
+  margin-left: 70px;
+}
+/* Container for video thumbnails */
+/* .video-item {
+  display: inline-block;
+  width: 400px;
+  margin: 10px;
+  text-align: center;
+} */
+/* Container for the video item */
+/* Video list container - Use flexbox to display items in a row */
+#video-list {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line if there's not enough space */
+  gap: 10px; /* Add space between items */
+  justify-content: flex-start; /* Align items to the start (left) */
+}
+
+/* Each video item */
+.video-item {
+  width: calc(33.33% - 10px); /* Each video takes up 1/3 of the container width (adjust as needed) */
+  box-sizing: border-box; /* Ensure padding and margin are considered in the width */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Style for video thumbnail */
+
+
+/* Title styling */
+.video-item h3 {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 10px;
+}
+
+
+.video-thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+} 
+
+.video-thumbnail:hover {
+  transform: scale(1.05);
+}
+.video-description {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.read-more {
+  color: gray;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.back-btn {
+  position: absolute;
+  top: 150px;
+  left: 50px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.back-btn i {
+  font-size: 20px;
+}
+
+/* Normal YouTube Video (16:9) */
+.normal-video {
+  width: 800px;
+  height: 450px;
+  display: block;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* YouTube Shorts (9:16) */
+.shorts-video {
+  width: 300px;
+  height: 530px;
+  display: block;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.back-btn {
+  position: absolute;
+  top: 150px;
+  left: 50px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.back-btn i {
+  font-size: 20px; /* Font Awesome icon size */
+}
+
+/* Footer */
+.footer {
+  background-color: #202020;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 200px;
+  }
+  .filter-bar {
+    margin-left: 200px;
+  }
+  .content {
+    margin-left: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-right {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .sidebar {
+    width: 100px;
+  }
+
+  .filter-bar {
+    margin-left: 100px;
+  }
+  .content {
+    margin-left: 100px;
+  }
+
+  .auth-btn,
+  .upload-btn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .video-item {
+    max-width: 250px;
+  }
+
+  .video-item h3 {
+    font-size: 14px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    display: none;
+  }
+
+  .filter-bar,
+  .content {
+    margin-left: 0;
+  }
+
+  .header-right {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+
+  .auth-btn,
+  .upload-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
